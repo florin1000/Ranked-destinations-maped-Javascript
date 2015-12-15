@@ -38,6 +38,7 @@ q:before, q:after {
 	margin-top:100px;
 }
 #container{
+	/*margin:0 auto;*/
 	display:block;
 	background-color:#d6995c;
 	width:600px;
