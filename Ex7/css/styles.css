@@ -1,0 +1,90 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+body{
+  background-color: #40d65d;
+}
+.container{
+  width:300px;
+  margin:0 auto;
+  margin-top:100px;
+}
+#textinput{
+  margin:10px;
+  display:block;
+  width:250px;
+  height:200px;
+  border:2px solid aquamarine;
+}
+.bottom{
+  margin:10px;
+}
+button{
+  margin-left:15px;
+  background-color: #f76e6e;
+  margin:0 solid grey;
+}
+button span{
+  background-color: #f76e6e;
+  font-weight:bold;
+}
+input{
+  background-color:#75f075;
+}
+#textinput{
+  background-color:#d6995c;
+  overflow:auto;
+  position:relative;
+}
+input[value="submit"]{
+  font-weight:bold;
+}
+.message-box{
+  padding:10px;
+  clear:both;
+  /*position:absolute;
+  bottom:0;*/
+}
+.image{
+  content: "";  
+  background: url('../img/spritelogo.png') no-repeat  -110px -380px;
+  width: 57px;
+  height: 32px;
+  /*width:40px;
+  height:40px;*/
+
+  /*background:brown;*/
+  float:left;
+  margin-right:5px;
+}
