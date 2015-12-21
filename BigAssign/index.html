@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Big Assignment</title>
+    <link href='css/bootstrap.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        function initialize() {
+            var mapCanvas = document.getElementById('map');
+            var mapOptions = {
+                center: new google.maps.LatLng(44.439663, 26.096306),
+                zoom: 8,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            var map = new google.maps.Map(mapCanvas, mapOptions)
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    <!--<script src="/bootstrap/js/bootstrap.min.js"></script>-->
+</head>
+
+<body>
+<script type="text/html" id="tpl">
+    <td><input/></td>
+    <td><input/></td>
+    <td><input/></td>
+    <td><a href="#" class="add-btn">Add!</a></td>
+</script>
+<div class=container>
+
+    <div class="myform">
+        <form>
+
+            <div class="form-group has-success has-feedback" id="form-group-modified">
+                <label class="control-label mod" for="inputSuccess2">Name</label>
+                <input type="text" class="form-control modifiedcss" id="inputSuccess2"
+                       aria-describedby="inputSuccess2Status">
+                <span class="glyphicon glyphicon-ok form-control-feedback " id="spanmodified" aria-hidden="true"></span>
+                <span id="inputSuccess2Status " class="sr-only">(success)</span>
+            </div>
+            <div class="form-group has-error has-feedback" id="form-group-modified">
+                <label class="control-label mod" for="inputError2">City visited</label>
+                <input type="text" class="form-control modifiedcss" id="inputError2"
+                       aria-describedby="inputError2Status">
+                <span class="glyphicon glyphicon-remove form-control-feedback " id="spanmodified"
+                      aria-hidden="true"></span>
+                <span id="inputError2Status" class="sr-only">(error)</span>
+            </div>
+
+            <!--<div class="form-group">-->
+            <!--<label class="control-label" for="inputSuccess1">Name:</label>-->
+            <!--<input type="text" class="form-control" id="inputSuccess1" aria-describedby="helpBlock2">-->
+            <!--<span id="helpBlock2" class="help-block">Not a valid input</span>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+            <!--<label class="control-label" for="inputError1">City visited:</label>-->
+            <!--<input type="text" class="form-control" id="inputError1">-->
+            <!--<span id="helpBlock2" class="help-block">Not a valid input</span>-->
+            <!--</div>-->
+
+
+            <div class="rating" id="fivestar">
+                <label class="starlabel">Rating:</label>
+                <div class="starsegment">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
+
+            </div>
+            <div id="checkbox">
+                <label>
+                    <input type="checkbox" checked="checked" id="button"> More than a weekend
+                </label>
+
+            </div>
+            <div id="btn">
+                <a href="#" class="add-btn">Add!</a>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="statistics">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th><span>Name</span></th>
+                <th><span>City</span></th>
+                <th><span>Rating</span></th>
+                <th><span>Actions</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td><a href="#">Remove</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td><a href="#">Remove</a></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td><a href="#">Remove</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="map">
+
+    </div>
+
+</div>
+<script type="text/javascript" src="js/template-engine.js"></script>
+<script type="text/javascript" src="js/javascript.js"></script>
+</body>
+</html>

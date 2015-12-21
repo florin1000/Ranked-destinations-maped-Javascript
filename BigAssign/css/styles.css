@@ -1,0 +1,242 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+@font-face {
+    src: url("../fonts/glyphicons-halflings-regular.woff2") format("woff2");
+}
+
+.container {
+    width: 1240px;
+    margin: 0 auto;
+    padding-top: 50px;
+    background-color: white;
+    clear: both;
+    height: 300px;
+}
+
+/*.clearfix{*/
+/*clear:both;*/
+/*}*/
+/*.container:after{*/
+/*clear:both;*/
+/*}*/
+.myform {
+    width: 29%;
+    margin-left: 2%;
+    margin-right: 2%;
+    height: 310px;
+    float: left;
+    background-color: #E3E3E3;
+    display: inline-block;
+}
+
+.statistics {
+    width: 29%;
+    display: inline-block;
+    float: left;
+    height: 310px;
+    margin-left: 2%;
+    margin-right: 2%;
+    background-color: #E3E3E3;
+}
+
+#map {
+    width: 29%;
+    display: inline-block;
+    float: right;
+    height: 310px;
+    margin-left: 2%;
+    margin-right: 2%;
+    background-color: #E3E3E3;
+}
+
+#form-group-modified {
+    margin-bottom: 10px;
+}
+
+.modifiedcss {
+    width: 95%;
+}
+
+.mod {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+/*.has-feedback label .form-control-feedback,*/
+#spanmodified {
+    top: 36px;
+}
+
+.myform form .form-group .form-control {
+    widht: 50%;
+}
+
+/*.form-group {*/
+/*margin-top: 10px;*/
+/*}*/
+
+/*.form-group span {*/
+/*display: none;*/
+/*margin-top: 10px;*/
+/*margin-bottom: 10px;*/
+/*margin-left: 10px;*/
+/*}*/
+
+/*.form-group label {*/
+/*dislay: block;*/
+/*margin-top: 10px;*/
+/*margin-bottom: 10px;*/
+/*margin-left: 10px;*/
+/*}*/
+.myform form .form-group input {
+    widht: 100%;
+}
+
+.form-group input {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.rating label {
+    margin: 10px;
+}
+/*Stelutele pentru rating*/
+.star {
+    cursor: pointer;
+}
+
+.star.active {
+    color: yellow;
+}
+
+.starsegment {
+    margin: 10px;
+}
+
+#checkbox {
+    margin-top: 10px;
+}
+
+#checkbox label {
+    margin: 10px;
+}
+
+/*#helpBlock2{*/
+/*display:inline-block;*/
+/*}*/
+#validinput {
+    display: block;
+}
+
+::-webkit-input-placeholder {
+    font-size: 14px;
+    color: #d0cdfa;
+    text-transform: uppercase;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+}
+
+#btn {
+    margin: 10px;
+}
+
+#btn a {
+    text-decoration: none;
+    background-color: coral;
+    padding: 2px 15px;
+    color: black;
+    border-radius: 5px;
+}
+
+/*statistics*/
+.table-bordered thead tr th span:before {
+    content: "\25be";
+    margin-left: -5px;
+    padding-right: 5px;
+}
+
+.statistics .table-bordered thead tr {
+    border-top: 1px solid black;
+}
+
+.statistics .table-bordered thead tr th {
+    border: 1px solid black;
+}
+
+.statistics .table-bordered tbody tr:nth-child(2n+1) {
+    background-color: white;
+}
+
+.statistics .table-bordered tbody tr:nth-child(2n) {
+    background-color: #E3E3E3;
+}
+
+.statistics .table-bordered tbody tr td {
+    border: 1px solid black;
+}
+
+/*#the-table tr:last-child .add-btn {*/
+/*display: inline;*/
+/*}*/
+
+/*:-moz-placeholder {
+ font-size:14px;
+ color: #d0cdfa;
+ text-transform: uppercase;
+ text-align: center;
+ font-weight: bold;
+}
+::-moz-placeholder {  
+ font-size: 14px;
+ color: #d0cdfa; 
+ text-transform: uppercase;
+ text-align: center;
+ font-weight: bold;
+} */
+/*:-ms-input-placeholder { 
+ font-size: 14px; 
+ color: #d0cdfa;
+ text-transform: uppercase;
+ text-align: center;
+ font-weight: bold;
+}*0/
