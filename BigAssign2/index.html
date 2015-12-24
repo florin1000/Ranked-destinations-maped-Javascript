@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Big Assignment</title>
+    <link href='css/bootstrap.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+
+</head>
+
+<body>
+<script type="text/html" id="tpl">
+    <td><%=name%></td>
+    <td><%=city%></td>
+    <td><%=rating%>/5</td>
+    <td><a href="#" class="remove-btn">Remove</a></td>
+</script>
+<div class="containerinitial">
+    <div class="header">
+        <div class="logo">
+            <a href="https://www.javascript.com"><img src="img/logo-mark.png" alt="javascript Logo"></a>
+        </div>
+        <div class="nav">
+            <h1>Javascript - Ultimate Survival</h1>
+            <p>Proper way to build a form connected with Google Maps Api</p>
+        </div>
+    </div>
+    <div class=container>
+
+        <div class="myform">
+            <form id="form">
+
+                <div class="form-group has-feedback" id="form-group-modified">
+                    <label class="control-label mod" for="inputSuccess2">Name</label>
+                    <input type="text" class="form-control modifiedcss" id="name"
+                           aria-describedby="inputSuccess2Status">
+                    <span class="glyphicon glyphicon-ok form-control-feedback " id="spanmodified"
+                          aria-hidden="true"></span>
+                    <span id="inputSuccess2Status " class="sr-only">(success)</span>
+                </div>
+                <div class="form-group has-feedback" id="form-group-modified">
+                    <label class="control-label mod" for="inputError2">City visited</label>
+                    <!--id="inputError2" --pentru input-->
+                    <input type="text" class="form-control modifiedcss " id="city" aria-describedby="inputError2Status">
+                <span class="glyphicon glyphicon-remove form-control-feedback " id="spanmodified"
+                      aria-hidden="true"></span>
+                    <span id="inputError2Status" class="sr-only">(error)</span>
+                </div>
+                <div class="rating" id="fivestar">
+                    <label class="starlabel">Rating:<span class="invalidrating">Please rate!</span></label>
+                    <div class="starsegment">
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+
+                </div>
+                <div id="checkbox">
+                    <label>
+                        <input type="checkbox" checked="checked" id="button"> More than a weekend
+                    </label>
+
+                </div>
+                <div id="btn">
+                    <input type="submit" value="Add!">
+                    <!--<a href="#" class="add-btn">Add!</a>-->
+                </div>
+
+            </form>
+        </div>
+
+        <div class="statistics">
+            <table class="table table-bordered" id="table">
+                <thead>
+                <tr>
+                    <th><span>Name</span></th>
+                    <th><span>City</span></th>
+                    <th><span>Rating</span></th>
+                    <th><span>Actions</span></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+                <tfoot class="tablefooter">
+                <tr>
+                    <td>Total: <span id="count">0</span>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>Avg. Rating: <span id="average"></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div id="map" class="controls">
+
+        </div>
+
+    </div>
+    <div class="clearfix">
+    </div>
+    <div class="footer">
+        <div class="credentials">
+            <p>Author: Oancea Florin</p>
+            <p>Under careful supervision of Vlad (Oportocala) Goran</p>
+            <p>Copyright Bababui Productions</p>
+        </div>
+        <div class="logofooter">
+            <img src="img/logo-mark.png" alt="javascript Logo">
+        </div>
+    </div>
+</div>
+<script>
+//    var map;
+//    var city = document.getElementById("city");
+//    function initialize() {
+//        //var mapCanvas = document.getElementById('map');
+//        var mapOptions = {
+//            center: new google.maps.LatLng(44.453592, 26.104718),
+//            zoom: 10,
+//            mapTypeId: google.maps.MapTypeId.ROADMAP
+//            var autocomplete = new google.maps.places.Autocomplete(city);
+//        }
+//        map = new google.maps.Map(document.getElementById("map"), mapOptions);
+//
+//
+//        //               console.log(input);
+//        //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input2);
+//        //          nu functioneaza!!!!
+//
+//
+//    }
+//    ;
+//
+//
+//    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+</script>
+<script type="text/javascript" src="js/template-engine.js"></script>
+<script type="text/javascript" src="js/javascript.js"></script>
+</body>
+</html>
