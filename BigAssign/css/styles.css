@@ -269,15 +269,32 @@ q:before, q:after {
     z-index: 5;
 }
 
-.invalidrating {
-    display: none;
+/*.invalidrating {*/
+    /*display: none;*/
+/*}*/
+.invalidstarlabel{
+    color: red;
+}
+.invalidname2{
+    display:none;
+}
+.invalidcity2{
+    display:none;
+}
+.invalid2{
+    display:none;
 }
 
-#invalidrtg {
-    display: inline;
-    color: red;
-    margin-left: 20px;
+.invalid3{
+    color:red;
+    display:block;
+    margin-top:8px;
 }
+/*.rating .starlabel #invalid {*/
+    /*display: inline-block;*/
+    /*color: red;*/
+    /*margin-left: 20px;*/
+/*}*/
 
 /*end-validari*/
 .statistics .table-bordered thead {

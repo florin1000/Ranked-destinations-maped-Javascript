@@ -1,20 +1,13 @@
 var form = document.getElementById("form");
-
-//se stocheaza in vaiabila inputname continutul tagului cu id-ul name
-//var inputName = document.getElementById("name");
-//se stocheaza in variabila city continutul tag-ului cu id-ul city(orasul introdus )
-//var city = document.getElementById("city");
-//se stocheaza id-ul stelutelor intr-o variabila
 var stelute = document.getElementsByClassName('star');
-
 var table = document.getElementById("table");
 var tableBody = table.getElementsByTagName('tbody')[0];
 var count = document.getElementById("count");
 var store = [];
 var average = document.getElementById("average");
-//se adauga eventul pe form
 form.addEventListener("submit", function (event) {
     event.preventDefault();
+    codeAddress();
 
     var data = getValues();
     if (isValidData(data)) {
@@ -24,14 +17,24 @@ form.addEventListener("submit", function (event) {
         store.push(data);
         render(store);
 
+
         //resetam valorile din form:
-
-        for (var j = 0; j < stelute.length; j++) {
-            stelute[j].classList.remove('active');
-        }
-
         succes.classList.remove("has-success");
         succes.classList.remove("has-error");
+        //validName.classList.add("invalidname2");
+        //validName.classList.remove("invalid3");
+
+        invalidRating.classList.add('invalid2');
+        invalidRating.classList.remove('invalid3');
+
+        invalidRating.classList.remove('invalidstarlabel');
+        invalidRating.classList.remove('invalidstarlabel');
+        //stelute.classList.remove('active');
+        for (var x = 0; x < stelute.length; x++) {
+            stelute[x].classList.remove('active');
+            rating = 0;
+        }
+
 
     }
 
@@ -48,7 +51,6 @@ for (var i = 0; i < stelute.length; i++) {
         var rating = this.getAttribute("data-value");
 
         var length = parseInt(rating, 10);
-
         for (var j = 0; j < length; j++) {
             stelute[j].classList.add('active');
         }
@@ -74,23 +76,24 @@ for (var i = 0; i < stelute.length; i++) {
             }
         }
         ;
-
-
     });
-
 }
 ;
 //end count stars;
 
-
-//
 //Se verifica inputul;
+var validName = document.getElementById('invalidname');
 var succes = document.getElementById("form-group-modified");
+
 var isValidName = function (name) {
     if (name.length >= 2) {
         succes.classList.add("has-success");
+        validName.classList.add("invalidname2");
+        validName.classList.remove("invalid3");
         return true;
     } else {
+        validName.classList.remove("invalidname2");
+        validName.classList.add("invalid3");
         succes.classList.add("has-error");
         return false;
     }
@@ -109,9 +112,9 @@ function initialize() {
     }
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
     var inputcity = document.getElementById("city");
-    //               console.log(input);
+
     //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input2);
-    //          nu functioneaza!!!!
+
     var autocomplete = new google.maps.places.Autocomplete(inputcity);
 
 }
@@ -121,7 +124,7 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 var c = 0;
-var isValidMarker = function (address) {
+function codeAddress() {
     var address = document.getElementById("city").value;
     geocoder.geocode({'address': address}, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
@@ -133,22 +136,53 @@ var isValidMarker = function (address) {
             });
         } else {
             c = 0;
-            alert("Geocode was not successful for the following reason: " + status);
+            //alert("Geocode was not successful for the following reason: " + status);
         }
     });
-};
+}
 
-var isValidCity = function () {
-    if (c == 1) {
-        return 1
+var validName = document.getElementById('invalidname');
+var succes = document.getElementById("form-group-modified");
+
+var isValidName = function (name) {
+    if (name.length >= 2) {
+        succes.classList.add("has-success");
+        validName.classList.add("invalidname2");
+        validName.classList.remove("invalid3");
+        return true;
     } else {
-        return 1
+        validName.classList.remove("invalidname2");
+        validName.classList.add("invalid3");
+        succes.classList.add("has-error");
+        return false;
     }
 };
 
+var validCity = document.getElementById("invalidcity");
+var isValidCity = function (city) {
+    if (city.length >= 1) {
+        validCity.classList.add("invalidcity2");
+        validCity.classList.remove("invalid3");
+        return 1
+    } else {
+        validCity.classList.remove("invalidcity2");
+        validCity.classList.add("invalid3");
+        return
+    }
+};
+var invalidRating = document.getElementById("invalid");
 //se verifica daca s-a dat rating;
 var isValidRating = function (rating) {
-    return rating >= 1;
+    if (rating>=1) {
+        invalidRating.classList.add('invalid2');
+        invalidRating.classList.remove('invalid3');
+        //invalidRating.classList.add('invalidstarlabel');
+        return 1;
+    }else {
+        invalidRating.classList.remove('invalid2');
+        invalidRating.classList.add('invalid3');
+        return 0
+    }
 };
 
 //se verifica daca butonul este checked;nu mai este nevoie!!!
@@ -251,9 +285,13 @@ var populateTable = function (store) {
 
 var getRating = function (store) {
     var sum = 0;
-    for (var k = 0; k < store.length; k++) {
-        sum += parseInt(store[k].rating);
-    }
+    if (store.length != 0) {
+        for (var k = 0; k < store.length; k++) {
+            sum += parseInt(store[k].rating);
+        }
 
-    return sum / store.length;
+        return (sum / store.length).toFixed(2);
+    } else {
+        return 0;
+    }
 };

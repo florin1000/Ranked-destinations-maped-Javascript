@@ -34,7 +34,7 @@
             <form id="form">
 
                 <div class="form-group has-feedback" id="form-group-modified">
-                    <label class="control-label mod" for="inputSuccess2">Name</label>
+                    <label class="control-label mod" for="inputSuccess2">Name<span id="invalidname" class="invalidname2">Name should be at least 2 characters long</span></label>
                     <input type="text" class="form-control modifiedcss" id="name"
                            aria-describedby="inputSuccess2Status">
                     <span class="glyphicon glyphicon-ok form-control-feedback " id="spanmodified"
@@ -42,7 +42,7 @@
                     <span id="inputSuccess2Status " class="sr-only">(success)</span>
                 </div>
                 <div class="form-group has-feedback" id="form-group-modified">
-                    <label class="control-label mod" for="inputError2">City visited</label>
+                    <label class="control-label mod" for="inputError2">City visited<span id="invalidcity" class="invalidcity2">City should be at least 1 character long</span></label>
                     <!--id="inputError2" --pentru input-->
                     <input type="text" class="form-control modifiedcss " id="city" aria-describedby="inputError2Status">
                 <span class="glyphicon glyphicon-remove form-control-feedback " id="spanmodified"
@@ -50,7 +50,7 @@
                     <span id="inputError2Status" class="sr-only">(error)</span>
                 </div>
                 <div class="rating" id="fivestar">
-                    <label class="starlabel">Rating:<span class="invalidrating">Please rate!</span></label>
+                    <label class="starlabel">Rating:<span id="invalid" class="invalid2">Please rate!</span></label>
                     <div class="starsegment">
                         <span class="star" data-value="1">&#9733;</span>
                         <span class="star" data-value="2">&#9733;</span>
