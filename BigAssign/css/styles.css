@@ -66,6 +66,7 @@ q:before, q:after {
     margin: 0 auto;
     width: 310px;
     font-size: 20px;
+    line-height: 24px;
     margin-bottom: 100px;
 }
 

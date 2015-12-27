@@ -7,10 +7,10 @@ var store = [];
 var average = document.getElementById("average");
 form.addEventListener("submit", function (event) {
     event.preventDefault();
-    codeAddress();
 
     var data = getValues();
     if (isValidData(data)) {
+        codeAddress();
         form.reset();
         city.focus();
 
@@ -107,7 +107,7 @@ function initialize() {
     geocoder = new google.maps.Geocoder();
     var mapOptions = {
         center: new google.maps.LatLng(44.453592, 26.104718),
-        zoom: 10,
+        zoom: 5,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
@@ -124,6 +124,7 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 var c = 0;
+var markers = [];//array-ul de markere
 function codeAddress() {
     var address = document.getElementById("city").value;
     geocoder.geocode({'address': address}, function (results, status) {
@@ -133,7 +134,10 @@ function codeAddress() {
             var marker = new google.maps.Marker({
                 map: map,
                 position: results[0].geometry.location
+
             });
+            markers.push(marker)//punem markerele intr-un array;
+            console.log(markers);
         } else {
             c = 0;
             //alert("Geocode was not successful for the following reason: " + status);
@@ -173,12 +177,12 @@ var isValidCity = function (city) {
 var invalidRating = document.getElementById("invalid");
 //se verifica daca s-a dat rating;
 var isValidRating = function (rating) {
-    if (rating>=1) {
+    if (rating >= 1) {
         invalidRating.classList.add('invalid2');
         invalidRating.classList.remove('invalid3');
         //invalidRating.classList.add('invalidstarlabel');
         return 1;
-    }else {
+    } else {
         invalidRating.classList.remove('invalid2');
         invalidRating.classList.add('invalid3');
         return 0
@@ -207,11 +211,12 @@ var getValues = function () {
     var city = inputs[1].value;
     //console.log('city:', city);
     // rating = rating ;
-
+    //var markers = markers;
     return {
         name: name,
         city: city,
-        rating: rating
+        rating: rating,
+        markers: markers
     };
 };
 
@@ -262,6 +267,8 @@ var getIndexOfButton = function (target) {
 var removeRow = function (target) {
     var index = getIndexOfButton(target);
     removeFromStore(store, index);
+    markers[index].setMap(null);//stergem  markerul de pe harta
+    markers.splice(index,1);//stergem markerul din arrayul de markere
     render(store);
 }
 
