@@ -37,6 +37,9 @@ form.addEventListener("submit", function (event) {
             stelute[x].classList.remove('active');
             rating = 0;
         }
+
+        eventTr();
+
     }
     return false;
 });
@@ -78,6 +81,8 @@ for (var i = 0; i < stelute.length; i++) {
 //end count stars;
 var map;
 var geocoder;
+var polygonCoords = [];//array de obiecte cu coordonatele markerelor
+//var markerCoords = {};//obiect pentru fiecare marker ce contine lat and lng
 function initialize() {
     //var mapCanvas = document.getElementById('map');
     geocoder = new google.maps.Geocoder();
@@ -92,7 +97,40 @@ function initialize() {
     //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input2);
     //var autocomplete =
     new google.maps.places.Autocomplete(inputcity);
+    getPolygon();
+//polygones
+//    polygonCoords2 = [
+//        {lat: 25.774, lng: -80.190},
+//        {lat: 18.466, lng: -66.118},
+//        //{lat: 32.321, lng: -64.757},
+//        {lat: 45, lng: 25}
+//       // {lat: 25.774, lng: -80.190}
+//    ];
+//    var perimeterPolygon = new google.maps.Polygon({
+//        paths: polygonCoords,//nu il vede???
+//        strokeColor: '#FF0000',
+//        strokeOpacity: 0.8,
+//        strokeWeight: 2,
+//        fillColor: '#FF0000',
+//        fillOpacity: 0.35
+//    });
+//    perimeterPolygon.setMap(map);
+}
+var perimeterPolygon = null;
+var getPolygon = function () {
+    console.log('getPolygon=' + polygonCoords);
+    if(perimeterPolygon!=null)perimeterPolygon.setMap(null);
+    perimeterPolygon = new google.maps.Polygon({
+        paths: polygonCoords,//nu il vede???
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35
+    });
+    // map.clearOverlays();//resetam reprezenatrea grafica  apoligoanelor pe harta
 
+     perimeterPolygon.setMap(map);
 }
 ////end test
 
@@ -100,6 +138,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 var c = 0;
 var markers = [];//array-ul de markere
+
 function codeAddress() {
     var address = document.getElementById("city").value;
     geocoder.geocode({'address': address}, function (results, status) {
@@ -107,17 +146,49 @@ function codeAddress() {
             c = 1;
             map.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-            });
-            markers.push(marker);//punem markerele intr-un array;
+                    map: map,
+                    //draggable: true,
+                    animation: google.maps.Animation.DROP,//ads animation on markers
+                    position: results[0].geometry.location
+
+                })
+                ;
+            var markerCoords = {};
+            markerCoords.lat = marker.position.lat();//se pun coordonatele in obiect;
+            markerCoords.lng = marker.position.lng();//se pun coordonatele in obiect;
+            //marker.addListener('click', toggleBounce);//se animeaza/dezanimeaza la click
+            markers.push(marker);//se pun markerele intr-un array;
+
+            polygonCoords.push(markerCoords);//se pune obiectul intr-un array
+
+
             console.log(markers);
         } else {
             c = 0;
             //alert("Geocode was not successful for the following reason: " + status);
         }
+
+        getPolygon();
+
+
     });
+    console.log('codeAddress=' + polygonCoords);
 }
+//functia de animare
+//function toggleBounce() {
+//    if (marker.getAnimation() !== null) {
+//        marker.setAnimation(null);
+//    } else {
+//        marker.setAnimation(google.maps.Animation.BOUNCE);
+//    }
+//}
+
+//buiding polygones
+//var getCoord=function(markers){
+//    for (t=0;t<markers.length;t++){
+//        polygonCoords[t].markerCoords.lat
+//    }
+//}
 
 var validName = document.getElementById('invalidname');
 //var succes = document.getElementById("form-group-modified");
@@ -207,6 +278,8 @@ tableBody.addEventListener("click", function (event) {
     event.preventDefault();//pentru a nu reseta toata pagina!!!!
     if (isRemoveBtn(event.target)) {
         removeRow(event.target);
+        getPolygon();//redesenam polygonul
+
     }
 });
 
@@ -235,6 +308,8 @@ var removeRow = function (target) {
     removeFromStore(store, index);
     markers[index].setMap(null);//stergem  markerul de pe harta
     markers.splice(index, 1);//stergem markerul din array-ul de markere
+    polygonCoords.splice(index, 1);//stergem coordonatele markerului din array;
+
     render(store);
 };
 
@@ -267,12 +342,26 @@ var getRating = function (store) {
         return 0;
     }
 };
+
+var getIndexOfTr = function (target) {
+    var tr = target;
+    var allTrs = tableBody.getElementsByTagName('tr');
+    allTrs = [].slice.call(allTrs);
+    var index = allTrs.indexOf(tr);
+    return index;
+};
+
+
 //nu functioneaza;
+//map.setCenter(markers[w].getPosition())
+var eventTr = function () {
+    for (w = 0; w < tableTr.length; w++) {
+        tableTr[w].addEventListener("click", function (ev) {
+            // console.log(ev);
+            var trIndex = getIndexOfTr(ev.target.parentNode);
+            if (trIndex != -1) map.setCenter(markers[trIndex].getPosition())
+        });
+    }
 
-
-for (w = 0; w < tableTr.length; w++) {
-    tableTr[w].addEventListener("click", function () {
-        //tableTr[w].style.backgroundColor = 'red';
-        map.setCenter(markers[w].getPosition())
-    });
 }
+//http://screencast.com/t/aoToV83mG
