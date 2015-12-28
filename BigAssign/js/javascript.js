@@ -5,6 +5,11 @@ var tableBody = table.getElementsByTagName('tbody')[0];
 var count = document.getElementById("count");
 var store = [];
 var average = document.getElementById("average");
+
+
+tableTr = tableBody.getElementsByTagName("tr");//construim un array de tr ;
+console.log(tableTr);
+
 form.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -12,15 +17,13 @@ form.addEventListener("submit", function (event) {
     if (isValidData(data)) {
         codeAddress();
         form.reset();
-        city.focus();
+        //city.focus();
 
         store.push(data);
         render(store);
-
-
         //resetam valorile din form:
-        succes.classList.remove("has-success");
-        succes.classList.remove("has-error");
+        //succes.classList.remove("has-success");
+        //succes.classList.remove("has-error");
         //validName.classList.add("invalidname2");
         //validName.classList.remove("invalid3");
 
@@ -34,13 +37,9 @@ form.addEventListener("submit", function (event) {
             stelute[x].classList.remove('active');
             rating = 0;
         }
-
-
     }
-
     return false;
 });
-
 //se numara stelutele pentru rating
 
 var rating;
@@ -49,7 +48,6 @@ for (var i = 0; i < stelute.length; i++) {
 
     star.addEventListener("mouseover", function () {
         var rating = this.getAttribute("data-value");
-
         var length = parseInt(rating, 10);
         for (var j = 0; j < length; j++) {
             stelute[j].classList.add('active');
@@ -58,48 +56,26 @@ for (var i = 0; i < stelute.length; i++) {
 
     star.addEventListener("click", function () {
         rating = this.getAttribute("data-value");
-
         var length = parseInt(rating, 10);
         for (var j = 0; j < stelute.length; j++) {
             stelute[j].classList.remove('active');
         }
-        for (var j = 0; j < length; j++) {
-            stelute[j].classList.add('active');
+        for (var jj = 0; jj < length; jj++) {
+            stelute[jj].classList.add('active');
         }
     });
 
     star.addEventListener('mouseout', function () {
         for (var j = 0; j < stelute.length; j++) {
-            stelute[j].classList.remove('active')
+            stelute[j].classList.remove('active');
             for (var l = 0; l < rating; l++) {
                 stelute[l].classList.add('active')
             }
         }
-        ;
     });
 }
-;
+
 //end count stars;
-
-//Se verifica inputul;
-var validName = document.getElementById('invalidname');
-var succes = document.getElementById("form-group-modified");
-
-var isValidName = function (name) {
-    if (name.length >= 2) {
-        succes.classList.add("has-success");
-        validName.classList.add("invalidname2");
-        validName.classList.remove("invalid3");
-        return true;
-    } else {
-        validName.classList.remove("invalidname2");
-        validName.classList.add("invalid3");
-        succes.classList.add("has-error");
-        return false;
-    }
-};
-//Se verifica orasul;
-//test
 var map;
 var geocoder;
 function initialize() {
@@ -109,16 +85,15 @@ function initialize() {
         center: new google.maps.LatLng(44.453592, 26.104718),
         zoom: 5,
         mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
+    };
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
     var inputcity = document.getElementById("city");
 
     //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input2);
-
-    var autocomplete = new google.maps.places.Autocomplete(inputcity);
+    //var autocomplete =
+    new google.maps.places.Autocomplete(inputcity);
 
 }
-;
 ////end test
 
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -134,9 +109,8 @@ function codeAddress() {
             var marker = new google.maps.Marker({
                 map: map,
                 position: results[0].geometry.location
-
             });
-            markers.push(marker)//punem markerele intr-un array;
+            markers.push(marker);//punem markerele intr-un array;
             console.log(markers);
         } else {
             c = 0;
@@ -146,18 +120,18 @@ function codeAddress() {
 }
 
 var validName = document.getElementById('invalidname');
-var succes = document.getElementById("form-group-modified");
+//var succes = document.getElementById("form-group-modified");
 
 var isValidName = function (name) {
     if (name.length >= 2) {
-        succes.classList.add("has-success");
+        //succes.classList.add("has-success");
         validName.classList.add("invalidname2");
         validName.classList.remove("invalid3");
         return true;
     } else {
         validName.classList.remove("invalidname2");
         validName.classList.add("invalid3");
-        succes.classList.add("has-error");
+        // succes.classList.add("has-error");
         return false;
     }
 };
@@ -171,9 +145,10 @@ var isValidCity = function (city) {
     } else {
         validCity.classList.remove("invalidcity2");
         validCity.classList.add("invalid3");
-        return
+        return 0
     }
 };
+
 var invalidRating = document.getElementById("invalid");
 //se verifica daca s-a dat rating;
 var isValidRating = function (rating) {
@@ -199,19 +174,12 @@ var isValidRating = function (rating) {
 //}
 //isValidChecked();
 
-
 //pentru primele doua inputuri se foloseste clasa form-control
 var inputs = document.getElementsByClassName('form-control');
 //se preiau valorile si se construieste un obiect;
 var getValues = function () {
-    var inputs = document.getElementsByClassName('form-control');
-    //console.log('inputs:', inputs);
     var name = inputs[0].value;
-    //console.log('name:', name);
     var city = inputs[1].value;
-    //console.log('city:', city);
-    // rating = rating ;
-    //var markers = markers;
     return {
         name: name,
         city: city,
@@ -220,20 +188,20 @@ var getValues = function () {
     };
 };
 
-var isValidData = function (data) {
+var isValidData = function () {
     var values = getValues();
-    if (isValidName(values.name) && isValidCity(values.city) && isValidRating(rating)) {
-        return true;
-    }
-    return false;
+    return (isValidName(values.name) && isValidCity(values.city) && isValidRating(rating));//conform indicatiilor web-storm
+    //if (isValidName(values.name) && isValidCity(values.city) && isValidRating(rating)) {
+    //    return true;
+    //}
+    //return false;
 };
 
 var createRow = function (values) {
     var tr = document.createElement('tr');
     tr.innerHTML = tmpl("tpl", values);
     tableBody.appendChild(tr);
-}
-
+};
 
 tableBody.addEventListener("click", function (event) {
     event.preventDefault();//pentru a nu reseta toata pagina!!!!
@@ -242,19 +210,17 @@ tableBody.addEventListener("click", function (event) {
     }
 });
 
-
 var isRemoveBtn = function (target) {
     return target.classList.contains("remove-btn");
-}
-
+};
 
 var updateTotal = function (sir) {
     count.innerHTML = sir.length;
-}
+};
 
 var updateAverage = function (store) {
     average.innerHTML = getRating(store);
-}
+};
 
 var getIndexOfButton = function (target) {
     var tr = target.parentNode.parentNode;
@@ -262,25 +228,25 @@ var getIndexOfButton = function (target) {
     allTrs = [].slice.call(allTrs);
     var index = allTrs.indexOf(tr);
     return index;
-}
+};
 
 var removeRow = function (target) {
     var index = getIndexOfButton(target);
     removeFromStore(store, index);
     markers[index].setMap(null);//stergem  markerul de pe harta
-    markers.splice(index,1);//stergem markerul din arrayul de markere
+    markers.splice(index, 1);//stergem markerul din array-ul de markere
     render(store);
-}
+};
 
 var render = function (store) {
     populateTable(store);
     updateTotal(store);
     updateAverage(store);
-}
+};
 
 var removeFromStore = function (store, index) {
     store.splice(index, 1);
-}
+};
 
 var populateTable = function (store) {
     tableBody.innerHTML = '';
@@ -296,9 +262,17 @@ var getRating = function (store) {
         for (var k = 0; k < store.length; k++) {
             sum += parseInt(store[k].rating);
         }
-
         return (sum / store.length).toFixed(2);
     } else {
         return 0;
     }
 };
+//nu functioneaza;
+
+
+for (w = 0; w < tableTr.length; w++) {
+    tableTr[w].addEventListener("click", function () {
+        //tableTr[w].style.backgroundColor = 'red';
+        map.setCenter(markers[w].getPosition())
+    });
+}
