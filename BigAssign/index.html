@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css"/>
     <!--<script src="http://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>-->
     <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>-->
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>
+    <script type="text/javascript"
+            src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>
 </head>
 
 <body>
@@ -17,7 +18,9 @@
     <td><%=name%></td>
     <td><%=city%></td>
     <td><%=rating%>/5</td>
-    <td><a href="#" class="remove-btn">Remove</a></td>
+    <td><a href="#" class="remove-btn">Remove</a>
+        <a href="#" class="edit-btn">Edit</a>
+    </td>
 </script>
 <div class="containerinitial">
     <div class="header">
@@ -35,7 +38,8 @@
             <form id="form">
 
                 <div class="form-group has-feedback" id="form-group-modified">
-                    <label class="control-label mod" for="inputSuccess2">Name<span id="invalidname" class="invalidname2">Name should be at least 2 characters long</span></label>
+                    <label class="control-label mod" for="inputSuccess2">Name<span id="invalidname"
+                                                                                   class="invalidname2">Name should be at least 2 characters long</span></label>
                     <input type="text" class="form-control modifiedcss" id="name"
                            aria-describedby="inputSuccess2Status">
                     <span class="glyphicon glyphicon-ok form-control-feedback " id="spanmodified"
@@ -43,7 +47,8 @@
                     <span id="inputSuccess2Status " class="sr-only">(success)</span>
                 </div>
                 <div class="form-group has-feedback" id="form-group-modified">
-                    <label class="control-label mod" for="inputError2">City visited<span id="invalidcity" class="invalidcity2">City should be at least 1 character long</span></label>
+                    <label class="control-label mod" for="inputError2">City visited<span id="invalidcity"
+                                                                                         class="invalidcity2">City should be at least 1 character long</span></label>
                     <!--id="inputError2" --pentru input-->
                     <input type="text" class="form-control modifiedcss " id="city" aria-describedby="inputError2Status">
                 <span class="glyphicon glyphicon-remove form-control-feedback " id="spanmodified"
@@ -72,6 +77,21 @@
                     <input type="submit" value="Add!">
                     <!--<a href="#" class="add-btn">Add!</a>-->
                 </div>
+
+                <ul class="filter">
+                    <li>
+                        <label>Filter By City</label>
+                        <input type="text" id="searchcity"/>
+                    </li>
+                    <li>
+                        <label>Filter By Name</label>
+                        <input type="text" id="searchcity"/>
+                    </li>
+                    <li>
+                        <label>Filter By Weekend</label>
+                        <input type="checkbox" checked="checked" id="searchweekend">
+                    </li>
+                </ul>
 
             </form>
         </div>
@@ -103,22 +123,34 @@
                 </tfoot>
             </table>
         </div>
+        <div class="submap">
+            <div id="map" class="controls">
+            </div>
 
-        <div id="map" class="controls">
+            <div class="clearfix">
+            </div>
 
+            <ul class="results">
+                <li>
+                    <input type="text" id="totaldistance"/>
+                    <label>Distance between all of the points(KM)</label>
+                </li>
+                <li>
+                    <input type="text" id="perimeter"/>
+                    <label>Perimeter of the outermost points(KM)</label>
+                </li>
+                <li>
+                    <input type="text" id="area"/>
+                    <label>Overall area covered </label>
+                </li>
+            </ul>
 
+            <div class="clearfix">
+            </div>
         </div>
-
         <div class="clearfix">
         </div>
-        <ul class="results">
-            <label></label>
-            <input type="text" id="totaldistance"><li>Distance between all of the points:</li>
-            <input type="text" id="perimeter"><li>Perimeter of the outermost points</li>
-            <input type="text" id="area"><li>Overall area covered by the points at the outermost edges of the</li>
-        </ul>
-        <div class="clearfix">
-        </div>
+
     </div>
 
     <div class="footer">
@@ -131,7 +163,8 @@
             <img src="img/logo-mark.png" alt="javascript Logo">
         </div>
     </div>
-</>
+</
+>
 <script>
     //    var map;
     //    function initialize() {

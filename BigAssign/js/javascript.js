@@ -371,3 +371,7 @@ var totalDistance = function () {
     return (total/1000).toFixed(2);
 }
 totDistance.value = totalDistance();
+var oras=[];
+for (j=0;j<tableTr.length;j++){
+    oras.push(tableTr[j])
+}
