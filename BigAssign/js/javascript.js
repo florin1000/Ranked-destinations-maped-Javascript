@@ -5,7 +5,7 @@ var tableBody = table.getElementsByTagName('tbody')[0];
 var count = document.getElementById("count");
 var store = [];
 var average = document.getElementById("average");
-
+var totDistance = document.getElementById('totaldistance');
 
 tableTr = tableBody.getElementsByTagName("tr");//construim un array de tr ;
 //console.log(tableTr);
@@ -21,6 +21,7 @@ form.addEventListener("submit", function (event) {
 
         store.push(data);
         render(store);
+        totDistance.value = totalDistance();
         //resetam valorile din form:
         //succes.classList.remove("has-success");
         //succes.classList.remove("has-error");
@@ -349,7 +350,7 @@ var eventTr = function () {
         });
     }
 
-}
+};
 //http://screencast.com/t/aoToV83mG
 //google.maps.geometry.spherical.computeDistanceBetween (latLngA, latLngB);
 //google.maps.LatLng.getPosition()
@@ -361,11 +362,12 @@ var eventTr = function () {
 //alert(google.maps.geometry.spherical.computeDistanceBetween (loc1, loc2));
 
 
-var total=0;
+var total = 0;
 var totalDistance = function () {
-    total=0;
-    for (y = 0; y < (polygonCoords.length - 1); y++){
-        total+=google.maps.geometry.spherical.computeDistanceBetween (new google.maps.LatLng(polygonCoords[y].lat, polygonCoords[y].lng), new google.maps.LatLng(polygonCoords[y+1].lat, polygonCoords[y+1].lng))
+    total = 0;
+    for (y = 0; y < (polygonCoords.length-1); y++) {
+        total += google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(polygonCoords[y].lat, polygonCoords[y].lng), new google.maps.LatLng(polygonCoords[y + 1].lat, polygonCoords[y + 1].lng))
     }
-    return total;
-        }
+    return (total/1000).toFixed(2);
+}
+totDistance.value = totalDistance();

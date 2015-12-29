@@ -167,24 +167,6 @@ q:before, q:after {
 .myform form .form-group .form-control {
     widht: 50%;
 }
-
-/*.form-group {*/
-/*margin-top: 10px;*/
-/*}*/
-
-/*.form-group span {*/
-/*display: none;*/
-/*margin-top: 10px;*/
-/*margin-bottom: 10px;*/
-/*margin-left: 10px;*/
-/*}*/
-
-/*.form-group label {*/
-/*dislay: block;*/
-/*margin-top: 10px;*/
-/*margin-bottom: 10px;*/
-/*margin-left: 10px;*/
-/*}*/
 .myform form .form-group input {
     widht: 100%;
 }
@@ -354,24 +336,15 @@ q:before, q:after {
 /*display: inline;*/
 /*}*/
 
-/*:-moz-placeholder {
- font-size:14px;
- color: #d0cdfa;
- text-transform: uppercase;
- text-align: center;
- font-weight: bold;
+
+
+.distance{
+    float:right;
+    z-index:10;
 }
-::-moz-placeholder {  
- font-size: 14px;
- color: #d0cdfa; 
- text-transform: uppercase;
- text-align: center;
- font-weight: bold;
-} */
-/*:-ms-input-placeholder { 
- font-size: 14px; 
- color: #d0cdfa;
- text-transform: uppercase;
- text-align: center;
- font-weight: bold;
-}*0/
+/*.results li{*/
+    /*display:inline;*/
+/*}*/
+/*.results input{*/
+    /*display:inline-block;*/
+/*}*/
