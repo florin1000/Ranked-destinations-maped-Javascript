@@ -21,7 +21,7 @@ form.addEventListener("submit", function (event) {
 
         store.push(data);
         render(store);
-        totDistance.value = totalDistance();
+
         //resetam valorile din form:
         //succes.classList.remove("has-success");
         //succes.classList.remove("has-error");
@@ -39,6 +39,7 @@ form.addEventListener("submit", function (event) {
             rating = 0;
         }
         eventTr();
+        totDistance.value = totalDistance();
     }
     return false;
 });
@@ -120,7 +121,7 @@ var getPolygon = function () {
     //console.log('getPolygon=' + polygonCoords);
     if (perimeterPolygon != null)perimeterPolygon.setMap(null);
     perimeterPolygon = new google.maps.Polygon({
-        paths: polygonCoords,//nu il vede???
+        paths: polygonCoords,
         strokeColor: '#FF0000',
         strokeOpacity: 0.8,
         strokeWeight: 2,
@@ -165,6 +166,7 @@ function codeAddress() {
             //alert("Geocode was not successful for the following reason: " + status);
         }
         getPolygon();
+        totDistance.value = totalDistance();
     });
     // console.log('codeAddress=' + polygonCoords);
 }
@@ -296,7 +298,7 @@ var removeRow = function (target) {
     markers.splice(index, 1);//stergem markerul din array-ul de markere
     polygonCoords.splice(index, 1);//stergem coordonatele markerului din array;
     path.splice(index, 1)//stergem  markerul.getPosition din array;
-
+    totDistance.value = totalDistance();
     render(store);
 };
 
@@ -371,7 +373,8 @@ var totalDistance = function () {
     return (total/1000).toFixed(2);
 }
 totDistance.value = totalDistance();
-var oras=[];
-for (j=0;j<tableTr.length;j++){
-    oras.push(tableTr[j])
-}
+
+//var oras=[];
+//for (j=0;j<tableTr.length;j++){
+//    oras.push(tableTr[j])
+//}
