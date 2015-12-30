@@ -5,9 +5,16 @@ var tableBody = table.getElementsByTagName('tbody')[0];
 var count = document.getElementById("count");
 var store = [];
 var average = document.getElementById("average");
+
 var totDistance = document.getElementById('totaldistance');
 var totArea = document.getElementById('area');
-tableTr = tableBody.getElementsByTagName("tr");//construim un array de tr ;
+var perimeter=document.getElementById('perimeter');
+
+var nameHead = document.getElementById('namehead');//pt sort
+var cityHead = document.getElementById('cityhead');//pt sort
+var ratingHead = document.getElementById('ratinghead');//pt sort
+
+var tableTr = tableBody.getElementsByTagName("tr");//construim un array de tr ;
 
 
 form.addEventListener("submit", function (event) {
@@ -43,6 +50,7 @@ form.addEventListener("submit", function (event) {
         //totArea.value=areaPolygon;
         //areaPolygon = getArea();
         totArea.value = getArea();
+        perimeter.value=perimetru();
     }
     return false;
 });
@@ -172,6 +180,7 @@ function codeAddress() {
         totDistance.value = totalDistance();
         //areaPolygon = getArea();
         totArea.value = getArea();
+        perimeter.value=perimetru();
     });
 }
 
@@ -300,10 +309,12 @@ var removeRow = function (target) {
     markers[index].setMap(null);//stergem  markerul de pe harta
     markers.splice(index, 1);//stergem markerul din array-ul de markere
     polygonCoords.splice(index, 1);//stergem coordonatele markerului din array;
-    path.splice(index, 1)//stergem  markerul.getPosition din array;
+    path.splice(index, 1);//stergem  markerul.getPosition din array;
     totDistance.value = totalDistance();
     getPolygon();//restam si poligonul ca sa se repare Aria+perimetrul//callback
     totArea.value = getArea();
+    perimeter.value=perimetru();
+    //eventTr();
     render(store);
 };
 
@@ -376,7 +387,65 @@ var totalDistance = function () {
 }
 totDistance.value = totalDistance();
 
+
+
+
+var totalp=0;
+var perimetru =function() {
+    totalp = 0;
+    if (polygonCoords.length > 2) {
+        for (ii = 0; ii < (polygonCoords.length - 1); ii++) {
+            totalp += google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(polygonCoords[ii].lat, polygonCoords[ii].lng), new google.maps.LatLng(polygonCoords[ii + 1].lat, polygonCoords[ii + 1].lng))
+
+        }
+        console.log(totalp);
+        totalp += google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(polygonCoords[(polygonCoords.length - 1)].lat, polygonCoords[(polygonCoords.length - 1)].lng), new google.maps.LatLng(polygonCoords[0].lat, polygonCoords[0].lng))
+        console.log(totalp);
+        return (totalp / 1000).toFixed(2);
+    }else{
+        return (2-2).toFixed(2);
+    }
+}
+perimeter.value=perimetru();
+
+
+
+
+
+
 var getArea = function () {
     return (google.maps.geometry.spherical.computeArea(perimeterPolygon.getPath()) / 1000000).toFixed(2);
 }
 totArea.value = getArea();
+//sort
+//
+//nameHead=
+//cityHead=
+//ratingHead=
+//functia de sortare obiecte
+//function compare(a,b) {
+//    if (a.field < b.field)
+//        return -1;
+//    if (a.field > b.field)
+//        return 1;
+//    return 0;
+//}
+//
+//objs.sort(compare);
+
+//console.log(store);
+nameHead.addEventListener("click", function (event) {
+    alert('mai mai');
+    function compare(a,b) {
+        if (a.name < b.name)
+            return -1;
+        if (a.name > b.name)
+            return 1;
+        return 0;
+    }
+    store.sort(compare);
+
+},
+false
+);
+

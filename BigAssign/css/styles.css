@@ -66,7 +66,7 @@ q:before, q:after {
     margin: 0 auto;
     width: 310px;
     font-size: 20px;
-    line-height: 24px;
+    line-height: 28px;
     margin-bottom: 100px;
 }
 
@@ -243,6 +243,7 @@ q:before, q:after {
     padding: 2px 15px;
     color: black;
     border-radius: 5px;
+    font-weight:bold;
 }
 
 /*statistics*/
@@ -305,6 +306,7 @@ q:before, q:after {
     border-radius: 5px;
     border: 1px solid black;
     background-color: #e55c53;
+    color:white;
 }
 
 /*.filter input[type=checkbox]{*/
@@ -423,11 +425,12 @@ tbody tr td a:nth-child(2) {
 }
 
 .results li input[type=text] {
-    width: 75px;
+    width: 110px;
     border-radius: 5px;
     background-color: #e55c53;
     border: 1px solid #313d38;
-    color: #313d38;
+    /*color: #313d38;*/
+    color:white;
 }
 
 .results li label {
@@ -474,3 +477,4 @@ tbody tr td a:nth-child(2) {
 /*.results input{*/
 /*display:inline-block;*/
 /*}*/
+/**/
