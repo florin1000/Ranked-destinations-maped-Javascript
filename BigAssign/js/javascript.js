@@ -6,9 +6,9 @@ var count = document.getElementById("count");
 var store = [];
 var average = document.getElementById("average");
 var totDistance = document.getElementById('totaldistance');
-
+var totArea = document.getElementById('area');
 tableTr = tableBody.getElementsByTagName("tr");//construim un array de tr ;
-//console.log(tableTr);
+
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -40,6 +40,9 @@ form.addEventListener("submit", function (event) {
         }
         eventTr();
         totDistance.value = totalDistance();
+        //totArea.value=areaPolygon;
+        //areaPolygon = getArea();
+        totArea.value = getArea();
     }
     return false;
 });
@@ -84,7 +87,6 @@ var geocoder;
 var polygonCoords = [];//array de obiecte cu coordonatele markerelor
 //var markerCoords = {};//obiect pentru fiecare marker ce contine lat and lng
 function initialize() {
-    //var mapCanvas = document.getElementById('map');
     geocoder = new google.maps.Geocoder();
     var mapOptions = {
         center: new google.maps.LatLng(44.453592, 26.104718),
@@ -117,8 +119,8 @@ function initialize() {
 //    perimeterPolygon.setMap(map);
 }
 var perimeterPolygon = null;
+//var areaPolygon = null;
 var getPolygon = function () {
-    //console.log('getPolygon=' + polygonCoords);
     if (perimeterPolygon != null)perimeterPolygon.setMap(null);
     perimeterPolygon = new google.maps.Polygon({
         paths: polygonCoords,
@@ -128,10 +130,10 @@ var getPolygon = function () {
         fillColor: '#FF0000',
         fillOpacity: 0.35
     });
-    // map.clearOverlays();//resetam reprezenatrea grafica  apoligoanelor pe harta
     perimeterPolygon.setMap(map);
+    //areaPolygon = getArea();
 }
-////end test
+
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -152,6 +154,7 @@ function codeAddress() {
 
                 })
                 ;
+
             var markerCoords = {};
             markerCoords.lat = marker.position.lat();//se pun coordonatele in obiect;
             markerCoords.lng = marker.position.lng();//se pun coordonatele in obiect;
@@ -167,8 +170,9 @@ function codeAddress() {
         }
         getPolygon();
         totDistance.value = totalDistance();
+        //areaPolygon = getArea();
+        totArea.value = getArea();
     });
-    // console.log('codeAddress=' + polygonCoords);
 }
 
 //buiding polygones
@@ -267,7 +271,6 @@ tableBody.addEventListener("click", function (event) {
     if (isRemoveBtn(event.target)) {
         removeRow(event.target);
         getPolygon();//redesenam polygonul
-
     }
 });
 
@@ -299,6 +302,8 @@ var removeRow = function (target) {
     polygonCoords.splice(index, 1);//stergem coordonatele markerului din array;
     path.splice(index, 1)//stergem  markerul.getPosition din array;
     totDistance.value = totalDistance();
+    getPolygon();//restam si poligonul ca sa se repare Aria+perimetrul//callback
+    totArea.value = getArea();
     render(store);
 };
 
@@ -340,9 +345,6 @@ var getIndexOfTr = function (target) {
     return index;
 };
 
-
-//nu functioneaza;
-//map.setCenter(markers[w].getPosition())
 var eventTr = function () {
     for (w = 0; w < tableTr.length; w++) {
         tableTr[w].addEventListener("click", function (ev) {
@@ -353,7 +355,7 @@ var eventTr = function () {
     }
 
 };
-//http://screencast.com/t/aoToV83mG
+
 //google.maps.geometry.spherical.computeDistanceBetween (latLngA, latLngB);
 //google.maps.LatLng.getPosition()
 //myLatLng = new google.maps.LatLng({lat: -34, lng: 151});
@@ -367,14 +369,14 @@ var eventTr = function () {
 var total = 0;
 var totalDistance = function () {
     total = 0;
-    for (y = 0; y < (polygonCoords.length-1); y++) {
+    for (y = 0; y < (polygonCoords.length - 1); y++) {
         total += google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(polygonCoords[y].lat, polygonCoords[y].lng), new google.maps.LatLng(polygonCoords[y + 1].lat, polygonCoords[y + 1].lng))
     }
-    return (total/1000).toFixed(2);
+    return (total / 1000).toFixed(2);
 }
 totDistance.value = totalDistance();
 
-//var oras=[];
-//for (j=0;j<tableTr.length;j++){
-//    oras.push(tableTr[j])
-//}
+var getArea = function () {
+    return (google.maps.geometry.spherical.computeArea(perimeterPolygon.getPath()) / 1000000).toFixed(2);
+}
+totArea.value = getArea();
