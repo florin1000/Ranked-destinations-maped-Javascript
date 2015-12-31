@@ -51,14 +51,33 @@ form.addEventListener("submit", function (event) {
         totArea.value = getArea();
         perimeter.value = perimetru();
 
+        //sortarea dupa nume
 
-
-        ratingHead.addEventListener("click", function () {
-                alert('Functioneaza sortarea store-ului insa nu se upgradeaza tabelul?');
+        nameHead.addEventListener("click",
+            //sortare(name)
+            function () {
+                alert('Functioneaza sortarea store-ului(store in consola si este sortat) insa nu este upgradat tabelul!!!');
                 function compare(a, b) {
-                    if (a.rating < b.rating)
+                    if (a.name < b.name)
                         return -1;
-                    if (a.rating > b.rating)
+                    if (a.name > b.name)
+                        return 1;
+                    return 0;
+                }
+
+                store.sort(compare);
+
+            });
+
+
+        //sortarea dupa oras
+
+        cityHead.addEventListener("click", function () {
+                alert('Functioneaza sortarea store-ului(store in consola si este sortat) insa nu este upgradat tabelul!!!');
+                function compare(a, b) {
+                    if (a.city < b.city)
+                        return -1;
+                    if (a.city > b.city)
                         return 1;
                     return 0;
                 }
@@ -68,8 +87,25 @@ form.addEventListener("submit", function (event) {
             false
         );
 
+//sortarea dupa raing
+        ratingHead.addEventListener("click", function () {
+                alert('Functioneaza sortarea store-ului(store in consola si este sortat) insa nu este upgradat tabelul!!!');
+                function compare(a, b) {
+                    if (a.rating < b.rating)
+                        return -1;
+                    if (a.rating > b.rating)
+                        return 1;
+                    return 0;
+                }
 
-        console.log(store);
+                store.sort(compare);
+                //alert(store);
+                //tableBody.appendChild(store);
+                console.log(store);
+            },
+            false
+        );
+
 
     }
     return false;
@@ -465,48 +501,32 @@ totArea.value = getArea();
 //objs.sort(compare);
 
 //console.log(store);
-nameHead.addEventListener("click", function () {
-        alert('mai mai');
-        function compare(a, b) {
-            if (a.name < b.name)
-                return -1;
-            if (a.name > b.name)
-                return 1;
-            return 0;
-        }
-
-        store.sort(compare);
-    },
-    false
-);
-
-cityHead.addEventListener("click", function () {
-        alert('mai mai');
-        function compare(a, b) {
-            if (a.city < b.city)
-                return -1;
-            if (a.city > b.city)
-                return 1;
-            return 0;
-        }
-
-        store.sort(compare);
-    },
-    false
-);
 
 
-    ratingHead.addEventListener("click", function () {
-            alert('mai mai');
-            function compare(a, b) {
-                if (a.rating < b.rating)
-                    return -1;
-                if (a.rating > b.rating)
-                    return 1;
-                return 0;
-            }
+//
+//ratingHead.addEventListener("click", function () {
+//        alert('mai mai');
+//        function compare(a, b) {
+//            if (a.rating < b.rating)
+//                return -1;
+//            if (a.rating > b.rating)
+//                return 1;
+//            return 0;
+//        }
+//
+//        store.sort(compare);
+//    },
+//    false
+//);
+var sortare = function (field) {
+    alert('mai mai');
+    function compare(a, b) {
+        if (a.field < b.field)
+            return -1;
+        if (a.field > b.field)
+            return 1;
+        return 0;
+    }
 
-            store.sort(compare);
-        },
-        false
-    );
+    store.sort(compare);
+}
