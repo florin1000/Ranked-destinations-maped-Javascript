@@ -8,7 +8,7 @@ var average = document.getElementById("average");
 
 var totDistance = document.getElementById('totaldistance');
 var totArea = document.getElementById('area');
-var perimeter=document.getElementById('perimeter');
+var perimeter = document.getElementById('perimeter');
 
 var nameHead = document.getElementById('namehead');//pt sort
 var cityHead = document.getElementById('cityhead');//pt sort
@@ -46,11 +46,31 @@ form.addEventListener("submit", function (event) {
             rating = 0;
         }
         eventTr();
+
         totDistance.value = totalDistance();
-        //totArea.value=areaPolygon;
-        //areaPolygon = getArea();
         totArea.value = getArea();
-        perimeter.value=perimetru();
+        perimeter.value = perimetru();
+
+
+
+        ratingHead.addEventListener("click", function () {
+                alert('Functioneaza sortarea store-ului insa nu se upgradeaza tabelul?');
+                function compare(a, b) {
+                    if (a.rating < b.rating)
+                        return -1;
+                    if (a.rating > b.rating)
+                        return 1;
+                    return 0;
+                }
+
+                store.sort(compare);
+            },
+            false
+        );
+
+
+        console.log(store);
+
     }
     return false;
 });
@@ -140,7 +160,7 @@ var getPolygon = function () {
     });
     perimeterPolygon.setMap(map);
     //areaPolygon = getArea();
-}
+};
 
 
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -180,7 +200,7 @@ function codeAddress() {
         totDistance.value = totalDistance();
         //areaPolygon = getArea();
         totArea.value = getArea();
-        perimeter.value=perimetru();
+        perimeter.value = perimetru();
     });
 }
 
@@ -313,13 +333,30 @@ var removeRow = function (target) {
     totDistance.value = totalDistance();
     getPolygon();//restam si poligonul ca sa se repare Aria+perimetrul//callback
     totArea.value = getArea();
-    perimeter.value=perimetru();
+    perimeter.value = perimetru();
 
     render(store);
     eventTr();
 };
 
 var render = function (store) {
+
+    //ratingHead.addEventListener("click", function () {
+    //        alert('mai mai');
+    //        function compare(a, b) {
+    //            if (a.rating < b.rating)
+    //                return -1;
+    //            if (a.rating > b.rating)
+    //                return 1;
+    //            return 0;
+    //        }
+    //
+    //        store.sort(compare);
+    //    },
+    //    false
+    //);
+
+
     populateTable(store);
     updateTotal(store);
     updateAverage(store);
@@ -358,7 +395,7 @@ var getIndexOfTr = function (target) {
 };
 
 var eventTr = function () {
-    for (w = 0; w < tableTr.length; w++) {
+    for (var w = 0; w < tableTr.length; w++) {
         tableTr[w].addEventListener("click", function (ev) {
             // console.log(ev);
             var trIndex = getIndexOfTr(ev.target.parentNode);
@@ -385,38 +422,31 @@ var totalDistance = function () {
         total += google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(polygonCoords[y].lat, polygonCoords[y].lng), new google.maps.LatLng(polygonCoords[y + 1].lat, polygonCoords[y + 1].lng))
     }
     return (total / 1000).toFixed(2);
-}
+};
 totDistance.value = totalDistance();
 
 
-
-
-var totalp=0;
-var perimetru =function() {
+var totalp = 0;
+var perimetru = function () {
     totalp = 0;
     if (polygonCoords.length > 2) {
         for (var ii = 0; ii < (polygonCoords.length - 1); ii++) {
             totalp += google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(polygonCoords[ii].lat, polygonCoords[ii].lng), new google.maps.LatLng(polygonCoords[ii + 1].lat, polygonCoords[ii + 1].lng))
 
         }
-        console.log(totalp);
-        totalp += google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(polygonCoords[(polygonCoords.length - 1)].lat, polygonCoords[(polygonCoords.length - 1)].lng), new google.maps.LatLng(polygonCoords[0].lat, polygonCoords[0].lng))
-        console.log(totalp);
+        totalp += google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(polygonCoords[(polygonCoords.length - 1)].lat, polygonCoords[(polygonCoords.length - 1)].lng), new google.maps.LatLng(polygonCoords[0].lat, polygonCoords[0].lng));
+
         return (totalp / 1000).toFixed(2);
-    }else{
-        return (2-2).toFixed(2);
+    } else {
+        return (2 - 2).toFixed(2);
     }
-}
-perimeter.value=perimetru();
-
-
-
-
+};
+perimeter.value = perimetru();
 
 
 var getArea = function () {
     return (google.maps.geometry.spherical.computeArea(perimeterPolygon.getPath()) / 1000000).toFixed(2);
-}
+};
 totArea.value = getArea();
 //sort
 //
@@ -435,18 +465,48 @@ totArea.value = getArea();
 //objs.sort(compare);
 
 //console.log(store);
-nameHead.addEventListener("click", function (event) {
-    alert('mai mai');
-    function compare(a,b) {
-        if (a.name < b.name)
-            return -1;
-        if (a.name > b.name)
-            return 1;
-        return 0;
-    }
-    store.sort(compare);
+nameHead.addEventListener("click", function () {
+        alert('mai mai');
+        function compare(a, b) {
+            if (a.name < b.name)
+                return -1;
+            if (a.name > b.name)
+                return 1;
+            return 0;
+        }
 
-},
-false
+        store.sort(compare);
+    },
+    false
 );
 
+cityHead.addEventListener("click", function () {
+        alert('mai mai');
+        function compare(a, b) {
+            if (a.city < b.city)
+                return -1;
+            if (a.city > b.city)
+                return 1;
+            return 0;
+        }
+
+        store.sort(compare);
+    },
+    false
+);
+
+
+    ratingHead.addEventListener("click", function () {
+            alert('mai mai');
+            function compare(a, b) {
+                if (a.rating < b.rating)
+                    return -1;
+                if (a.rating > b.rating)
+                    return 1;
+                return 0;
+            }
+
+            store.sort(compare);
+        },
+        false
+    );
