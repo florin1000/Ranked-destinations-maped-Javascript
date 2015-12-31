@@ -314,8 +314,9 @@ var removeRow = function (target) {
     getPolygon();//restam si poligonul ca sa se repare Aria+perimetrul//callback
     totArea.value = getArea();
     perimeter.value=perimetru();
-    //eventTr();
+
     render(store);
+    eventTr();
 };
 
 var render = function (store) {
@@ -380,7 +381,7 @@ var eventTr = function () {
 var total = 0;
 var totalDistance = function () {
     total = 0;
-    for (y = 0; y < (polygonCoords.length - 1); y++) {
+    for (var y = 0; y < (polygonCoords.length - 1); y++) {
         total += google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(polygonCoords[y].lat, polygonCoords[y].lng), new google.maps.LatLng(polygonCoords[y + 1].lat, polygonCoords[y + 1].lng))
     }
     return (total / 1000).toFixed(2);
@@ -394,7 +395,7 @@ var totalp=0;
 var perimetru =function() {
     totalp = 0;
     if (polygonCoords.length > 2) {
-        for (ii = 0; ii < (polygonCoords.length - 1); ii++) {
+        for (var ii = 0; ii < (polygonCoords.length - 1); ii++) {
             totalp += google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(polygonCoords[ii].lat, polygonCoords[ii].lng), new google.maps.LatLng(polygonCoords[ii + 1].lat, polygonCoords[ii + 1].lng))
 
         }
