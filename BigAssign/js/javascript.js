@@ -25,7 +25,6 @@ form.addEventListener("submit", function (event) {
         codeAddress();
         form.reset();
         //city.focus();
-
         store.push(data);
         render(store);
 
@@ -33,85 +32,24 @@ form.addEventListener("submit", function (event) {
         //succes.classList.remove("has-success");
         //succes.classList.remove("has-error");
         //validName.classList.add("invalidname2");
-        //validName.classList.remove("invalid3");
+
 
         invalidRating.classList.add('invalid2');
         invalidRating.classList.remove('invalid3');
-
         invalidRating.classList.remove('invalidstarlabel');
-        invalidRating.classList.remove('invalidstarlabel');
-        //stelute.classList.remove('active');
         for (var x = 0; x < stelute.length; x++) {
             stelute[x].classList.remove('active');
             rating = 0;
         }
         eventTr();
-
         totDistance.value = totalDistance();
         totArea.value = getArea();
         perimeter.value = perimetru();
-
-        //sortarea dupa nume
-
-        nameHead.addEventListener("click",
-            //sortare(name)
-            function () {
-                alert('Functioneaza sortarea store-ului(store in consola si este sortat) insa nu este upgradat tabelul!!!');
-                function compare(a, b) {
-                    if (a.name < b.name)
-                        return -1;
-                    if (a.name > b.name)
-                        return 1;
-                    return 0;
-                }
-
-                store.sort(compare);
-
-            });
-
-
-        //sortarea dupa oras
-
-        cityHead.addEventListener("click", function () {
-                alert('Functioneaza sortarea store-ului(store in consola si este sortat) insa nu este upgradat tabelul!!!');
-                function compare(a, b) {
-                    if (a.city < b.city)
-                        return -1;
-                    if (a.city > b.city)
-                        return 1;
-                    return 0;
-                }
-
-                store.sort(compare);
-            },
-            false
-        );
-
-//sortarea dupa raing
-        ratingHead.addEventListener("click", function () {
-                alert('Functioneaza sortarea store-ului(store in consola si este sortat) insa nu este upgradat tabelul!!!');
-                function compare(a, b) {
-                    if (a.rating < b.rating)
-                        return -1;
-                    if (a.rating > b.rating)
-                        return 1;
-                    return 0;
-                }
-
-                store.sort(compare);
-                //alert(store);
-                //tableBody.appendChild(store);
-                console.log(store);
-            },
-            false
-        );
-
-
-    }
+       }
     return false;
 });
-//se numara stelutele pentru rating
 
+//se numara stelutele pentru rating
 var rating;
 for (var i = 0; i < stelute.length; i++) {
     var star = stelute[i];
@@ -370,28 +308,52 @@ var removeRow = function (target) {
     getPolygon();//restam si poligonul ca sa se repare Aria+perimetrul//callback
     totArea.value = getArea();
     perimeter.value = perimetru();
-
     render(store);
     eventTr();
 };
 
 var render = function (store) {
 
-    //ratingHead.addEventListener("click", function () {
-    //        alert('mai mai');
-    //        function compare(a, b) {
-    //            if (a.rating < b.rating)
-    //                return -1;
-    //            if (a.rating > b.rating)
-    //                return 1;
-    //            return 0;
-    //        }
-    //
-    //        store.sort(compare);
-    //    },
-    //    false
-    //);
+    //sortare dupa nume
+    nameHead.addEventListener("click",
+        //sortare(name)
+        function () {
+            alert('Functioneaza sortarea store-ului(store in consola si este sortat) insa nu este upgradat tabelul in timp real.. doar dupa ce se adauga un alt element !!!');
+            function compare(a, b) {
+                if (a.name < b.name)
+                    return -1;
+                if (a.name > b.name)
+                    return 1;
+                return 0;
+            }
+            store.sort(compare);
+        });
+    //sortarea dupa oras
 
+    cityHead.addEventListener("click", function () {
+            alert('Functioneaza sortarea store-ului(store in consola si este sortat) insa nu este upgradat tabelul in timp real.. doar dupa ce se adauga un alt element!!!');
+            function compare(a, b) {
+                if (a.city < b.city)
+                    return -1;
+                if (a.city > b.city)
+                    return 1;
+                return 0;
+            }
+            store.sort(compare);
+        });
+
+//sortarea dupa raing
+    ratingHead.addEventListener("click", function () {
+            alert('Functioneaza sortarea store-ului(store in consola si este sortat) insa nu este upgradat tabelul in timp real.. doar dupa ce se adauga un alt element!!!');
+            function compare(a, b) {
+                if (a.rating < b.rating)
+                    return -1;
+                if (a.rating > b.rating)
+                    return 1;
+                return 0;
+            }
+        store.sort(compare);
+    });
 
     populateTable(store);
     updateTotal(store);
@@ -518,15 +480,15 @@ totArea.value = getArea();
 //    },
 //    false
 //);
-var sortare = function (field) {
-    alert('mai mai');
-    function compare(a, b) {
-        if (a.field < b.field)
-            return -1;
-        if (a.field > b.field)
-            return 1;
-        return 0;
-    }
-
-    store.sort(compare);
-}
+//var sortare = function (field) {
+//    alert('mai mai');
+//    function compare(a, b) {
+//        if (a.field < b.field)
+//            return -1;
+//        if (a.field > b.field)
+//            return 1;
+//        return 0;
+//    }
+//
+//    store.sort(compare);
+//}
