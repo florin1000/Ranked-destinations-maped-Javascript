@@ -1,0 +1,348 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+}
+
+@font-face {
+    src: url("../fonts/glyphicons-halflings-regular.woff2") format("woff2");
+}
+
+.containerinitial {
+    max-width: 1366px;
+    margin: 0 auto;
+    background-color: #e55c53;
+}
+
+.header {
+    background-color: #313d38;
+}
+
+.nav {
+    text-align: center;
+    background-color: #313d38;
+}
+
+.nav p {
+    font-family: sans-serif;
+    color: #ffff00;
+    margin: 0 auto;
+    width: 310px;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 100px;
+}
+
+.nav h1 {
+    font-family: sans-serif;
+    color: #ffff00;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0 auto;
+    width: 700px;
+    margin-top: 25px;
+    margin-bottom: 45px
+}
+
+.header .logo img {
+    height: 100px;
+    width: 93px;
+    margin: 25px;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.container {
+    width: 100%;
+    padding-top: 50px;
+    background-color: #6d7d79;
+}
+
+.footer {
+    height: 150px;
+    background-color: #e55c53;
+}
+
+.myform {
+    width: 35%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    height: 310px;
+    float: left;
+    display: inline-block;
+    margin-bottom: 50px;
+}
+
+.statistics {
+    width: 55%;
+    display: inline-block;
+    float: left;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-bottom: 50px;
+}
+
+#form-group-modified {
+    margin-bottom: 10px;
+}
+
+.modifiedcss {
+    width: 95%;
+}
+
+.mod {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#spanmodified {
+    top: 36px;
+}
+
+.form-group input {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.rating label {
+    margin: 10px;
+}
+
+/*Stelutele pentru rating*/
+.star {
+    cursor: pointer;
+}
+
+.star.active {
+    color: yellow;
+}
+
+.starsegment {
+    margin: 10px;
+}
+
+#checkbox {
+    margin-top: 10px;
+}
+
+#checkbox label {
+    margin: 10px;
+}
+
+#validinput {
+    display: block;
+}
+
+::-webkit-input-placeholder {
+    font-size: 14px;
+    color: #d0cdfa;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+}
+
+#btn {
+    margin: 10px;
+}
+
+#btn input[type="submit"] {
+    border: 0;
+    text-decoration: none;
+    background-color: #f2d50a;
+    padding: 2px 15px;
+    color: black;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#add:focus {
+    outline: 0;
+}
+
+button {
+    border: 0;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    background-color: #f2d50a;
+    padding: 2px 15px;
+}
+
+button:focus {
+    outline: 0;
+}
+
+.adding {
+    display: none;
+}
+
+/*statistics*/
+.table-bordered thead tr th span:before {
+    content: "\25be";
+    margin-left: -5px;
+    padding-right: 5px;
+}
+
+#form label {
+    font-weight: bold;
+}
+
+/*validari*/
+#form .form-control-feedback {
+    z-index: -2;
+}
+
+#validarebifa {
+    z-index: 5;
+}
+
+.invalidname2 {
+    display: none;
+}
+
+.invalidcity2 {
+    display: none;
+}
+
+.invalid2 {
+    display: none;
+}
+
+.invalid3 {
+    color: red;
+    display: block;
+    margin-top: 8px;
+}
+
+/*end-validari*/
+
+.statistics .table-bordered thead {
+    background-color: #e5bb31;
+}
+
+.statistics .table-bordered thead tr {
+    border-top: 1px solid #696969;
+}
+
+.statistics .table-bordered thead tr th {
+    border: 1px solid #696969;
+}
+
+.statistics .table-bordered thead tr th:nth-child(4) {
+    width: 30%;
+}
+
+.statistics .table-bordered tbody tr:nth-child(2n+1) {
+    background-color: #bdbdbd;
+}
+
+.statistics .table-bordered tbody tr:nth-child(2n) {
+    background-color: #a8a8a8;
+}
+
+.statistics .table-bordered tbody tr td {
+    border: 1px solid #696969;
+}
+
+/*formatareabutoanelor de remove si edit*/
+tbody tr td a:nth-child(2) {
+    margin-left: 10px;
+}
+
+.credentials {
+    float: left;
+    margin-left: 50px;
+    margin-top: 25px;
+}
+
+.credentials p {
+    margin: 10px;
+    font-size: 15px;
+}
+
+.logofooter img {
+    height: 45px;
+    width: 46px;
+    float: right;
+    margin-right: 30px;
+    margin-top: 30px;
+}
+
+#table .tablefooter tr td {
+    border: 1px solid #696969;
+}
+
+.hover {
+    color: gold;
+}
+
+.stars-container {
+    font-size: 25px;
+    padding-top: 15px;
+    padding-left: 9px;
+    display: block;
+}
+
+tbody tr td:nth-child(2) {
+    color: gold;
+}
+
+
+#form .to_edit,
+#form.to_edit .to_add {
+    display: none;
+}
+
+#form.to_edit .to_edit {
+    display: block;
+}
+
+#cancel, #edit, #add{
+    text-decoration:none;
+    color:black;
+    padding:5px 10px;
+    background-color:#f2d50a;
+    border:0;
+    border-radius: 5px;
+    font-weight:bold;
+}
+.pages{
+    text-align: center;
+    font-weight:bold;
+}

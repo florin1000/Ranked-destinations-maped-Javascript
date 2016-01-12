@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Big Assignment</title>
+    <link href='css/bootstrap.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+</head>
+
+<body>
+<div class="containerinitial">
+    <div class="header">
+        <div class="logo">
+            <a href="https://www.javascript.com"><img src="img/logo-mark.png" alt="javascript Logo"></a>
+        </div>
+        <div class="nav">
+            <h1>JQuery - Ultimate Library</h1>
+            <p>Proper way to build a form dynamically loaded with Ajax</p>
+        </div>
+    </div>
+    <div class=container>
+        <div class="myform">
+            <form id="form" method="POST">
+                <div class="form-group has-feedback" id="form-group-modified">
+                    <label class="control-label mod">City<span id="invalidname"
+                                                               class="invalidname2">Name should be at least 2 characters long</span></label>
+                    <input type="text" class="form-control modifiedcss" id="name" name="name"
+                           aria-describedby="inputSuccess2Status">
+                    <span class="glyphicon glyphicon-ok form-control-feedback " id="spanmodified"
+                          aria-hidden="true"></span>
+                    <span id="inputSuccess2Status " class="sr-only">(success)</span>
+                </div>
+
+                <input id="starsuri" type="text" class="stars" name="stele" value="0">
+
+                <div id="checkbox">
+                    <label>
+                        <input type="checkbox" checked="checked" id="button" name="visited"> Visited
+                    </label>
+                </div>
+
+                <div class="to_add">
+                    <input type="submit" value="Save" id="add"/>
+                </div>
+                <div class="to_edit">
+                    <input type="submit" value="Edit" id="edit"/>
+                    <a href="#" class="cancel" id="cancel">Cancel</a>
+                </div>
+            </form>
+        </div>
+
+        <div class="statistics">
+            <table class="table table-bordered" id="table">
+                <thead>
+                <tr>
+                    <th id="namehead"><span>City</span></th>
+                    <th id="cityhead"><span>Stars</span></th>
+                    <th id="ratinghead"><span>Visited</span></th>
+                    <th><span>Actions</span></th>
+                </tr>
+                </thead>
+                <tbody id="tbd">
+                </tbody>
+            </table>
+            <div class="pages">
+                <button id="decrement"> << </button>
+                <span id="currentpage">1</span> of <span id="totalpage"></span>
+                <button id="increment"> >> </button>
+            </div>
+        </div>
+        <div class="clearfix">
+        </div>
+    </div>
+    <div class="footer">
+        <div class="credentials">
+            <p>Author: Oancea Florin</p>
+            <p>Under careful supervision of Bedeabza </p>
+            <p>Copyright Bababui Productions</p>
+        </div>
+        <div class="logofooter">
+            <img src="img/logo-mark.png" alt="javascript Logo">
+        </div>
+    </div>
+</div>
+<script type="text/html" id="tpl">
+    <tr data-id="<%=id%>">
+        <td><%=name%></td>
+        <td><%=stars%></td>
+        <td><%=visited%></td>
+        <td><a href="#" class="remove-btn" name="remove">Remove</a>
+            <a href="#" class="edit-btn">Edit</a>
+        </td>
+    </tr>
+</script>
+<script type="text/javascript" src="js/template-engine.js"></script>
+<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="js/aplication.js"></script>
+<script type="text/javascript" src="js/store.js"></script>
+<script type="text/javascript" src="js/stars.js"></script>
+<script type="text/javascript" src="js/confirm.js"></script>
+</body>
+</html>
