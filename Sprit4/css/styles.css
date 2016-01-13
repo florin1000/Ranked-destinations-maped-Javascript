@@ -323,26 +323,65 @@ tbody tr td:nth-child(2) {
     color: gold;
 }
 
-
 #form .to_edit,
 #form.to_edit .to_add {
     display: none;
+}
+
+#form .to_add {
+    padding-left: 9px;
+}
+
+#form .to_edit {
+    padding-left: 9px;
+}
+
+.to_edit a {
+    margin-left: 5px;
 }
 
 #form.to_edit .to_edit {
     display: block;
 }
 
-#cancel, #edit, #add{
-    text-decoration:none;
-    color:black;
-    padding:5px 10px;
-    background-color:#f2d50a;
-    border:0;
+#cancel, #edit, #add {
+    text-decoration: none;
+    color: black;
+    padding: 5px 10px;
+    background-color: #f2d50a;
+    border: 0;
     border-radius: 5px;
-    font-weight:bold;
+    font-weight: bold;
 }
-.pages{
+
+.pages {
     text-align: center;
-    font-weight:bold;
+    font-weight: bold;
+}
+
+.gyfdisplay {
+    display: block;
+    position: absolute;
+    background:magenta;
+    /*height:200px;*/
+    /*width:250px;*/
+    margin-left:300px;
+    margin-top:300px;
+    z-index:10;
+}
+
+.gyfremove {
+    display: none;
+}
+
+.opacity{
+    opacity:0.8;
+}
+
+#id{
+    z-index:11;
+}
+
+.addgyf{
+    display:block;
 }

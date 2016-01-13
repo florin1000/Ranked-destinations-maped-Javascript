@@ -1,6 +1,8 @@
 var editingItem = null;
 var page = 1;
 var totalPages = 1;
+var tableBody = $('table tbody');
+var theForm = $('#form');
 
 var drawTable = function (store) {
     store.getAll(page).then(function (data) {
@@ -41,13 +43,36 @@ var onSubmit = function () {
 };
 
 var attachTableEvents = function () {
-    $('table tbody').find('a.edit-btn').click(editClicked);
-    $('table tbody').find('a.remove-btn').click(removeClicked);
+    tableBody.find('a.edit-btn').click(editClicked);
+    tableBody.find('a.remove-btn').click(removeClicked);
 };
+
+//var accesGipfy = function () {
+tableBody.on('click', 'tr', function () {
+    var cityName = $($(this).find('td')[0]).text();
+    console.log(cityName);
+    return new Promise(function (resolve, reject) {
+        $.ajax("http://api.giphy.com/v1/gifs/search?q=" + cityName + "&api_key=dc6zaTOxFJmzC", {
+            type: 'GET'
+        }).done(function (data) {
+            //console.log(data);
+            //console.log(data.data[0].images.downsized.url);
+            //console.log(data.data[0].bitly_gif_url);
+            $('#gify').removeClass('gyfremove');
+            $('#gify').addClass('gyfdisplay');
+            $('#closegyf').removeClass('gyfremove');
+            $('#closegyf').addClass('addgyf');
+            $('#gifyimg').attr("src", data.data[0].images.downsized.url);
+            resolve(data);
+        }).fail(function () {
+            alert('Giphy is not working proper')
+        });
+    });
+});
+//};
 
 var removeClicked = function () {
     var id = $(this).closest('tr').data('id');
-
     store.delete(id).then(function () {
         drawTable(store);
     });
@@ -58,18 +83,13 @@ var removeClicked = function () {
 var editClicked = function () {
     $('#form').addClass("to_edit");
     var id = $(this).closest('tr').data('id');
-    console.log(id);
+    //console.log(id);
     store.get(id).then(function (data) {
-            console.log(id);
-            editingItem = data;
-            console.log(data);
-            $('input[name="name"]').val(data.name);
-            $('input[name="visited"]').prop("checked", data.visited);
-            $('input[name="stele"]').val(data.stars).change();
-        },
-        function () {
-            alert('Something went wrong');
-        });
+        editingItem = data;
+        $('input[name="name"]').val(data.name);
+        $('input[name="visited"]').prop("checked", data.visited);
+        $('input[name="stele"]').val(data.stars).change();
+    });
 
     return false;
 };
@@ -88,10 +108,9 @@ var resetForm = function () {
 };
 
 $(document).ready(function () {
-    $('#form').submit(onSubmit);
-    $('#form').find('a.cancel').click(cancelClicked);
+    theForm.submit(onSubmit);
+    theForm.find('a.cancel').click(cancelClicked);
     $('[name="stele"]').stars();
-
     $('#increment').click(function () {
         if (page < totalPages) {
             page++;
@@ -103,13 +122,11 @@ $(document).ready(function () {
     $('#decrement').click(function () {
         if (page > 1) {
             page--;
-            $('#currentpage').text(page)
+            $('#currentpage').text(page);
             drawTable(store);
         }
     });
-
     drawTable(store);
 });
 
-//incarcare dinamica de imagini in js
-//documentatie gyphy
+

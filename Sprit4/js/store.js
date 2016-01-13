@@ -1,5 +1,6 @@
 var store = (function () {
     var theUrl = "http://server.godev.ro:8080/api/florin/entries";
+
     return {
         getAll: function (page) {
             var getSettings = {
@@ -12,8 +13,13 @@ var store = (function () {
             return new Promise(function (resolve, reject) {
                 $.ajax(theUrl + '?page=' + page, getSettings).done(function (data) {
                     resolve(data)
-                }).fail(function () {
-                    alert('Something went wrong')
+                }).fail(function (xhr) {
+                    if (xhr.status == "409") {
+                        alert(responseJson.error);
+                    } else {
+                        alert("Something went wrong!!");
+                    }
+                    ;
                 });
             });
         },
@@ -33,7 +39,6 @@ var store = (function () {
         },
         update: function (id, updateData) {
             var theUrl2 = "http://server.godev.ro:8080/api/florin/entries/" + id;
-
             return new Promise(function (resolve, reject) {
                 $.ajax(theUrl2, {
                     type: 'PUT',
@@ -50,7 +55,6 @@ var store = (function () {
 
             return new Promise(function (resolve, reject) {
                 var theUrl3 = theUrl + "/" + id;
-                console.log(theUrl3)
                 $.ajax(theUrl3, {
                     type: 'get',
                     headers: {
