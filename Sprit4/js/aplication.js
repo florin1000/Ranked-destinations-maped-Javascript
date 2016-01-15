@@ -141,9 +141,11 @@ $(document).ready(function () {
     $('[name="stele"]').stars();
     $(tableBody).on('click', 'a.remove-btn', function () {
             var id = $(this).closest('tr').data('id');
-            store.delete(id).then(function () {
-                drawTable(store);
-            });
+            if (confirm('Are you sure you want to delete this city?')) {
+                store.delete(id).then(function () {
+                    drawTable(store);
+                });
+            }
 
             return false;
         }

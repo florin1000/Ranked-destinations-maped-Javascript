@@ -15,10 +15,9 @@ $.fn.confirm = function (options) {
     return this.each(function () {
         if (!options || typeof options == 'object') {
             options = $.extend(defaults, options);
-
-            //si ascult evenimente
             var $this = $(this);
             $this.click(function () {
+
                 if (confirm(options.message)) {
                     options.onConfirm.call(this);
                 } else {
@@ -28,6 +27,7 @@ $.fn.confirm = function (options) {
                 return false;
             });
         } else {
+            
             if (methods.hasOwnProperty(options)) {
                 methods[options].call(this);
             }
