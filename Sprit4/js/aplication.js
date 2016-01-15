@@ -9,7 +9,7 @@ var closeButtonGyfi = $('#closegyf');
 var loading = $('.myform #loading');
 
 var errorHandler = function () {
-    alert('Ciocoflendere mai incearca!!')
+    alert('Ciocoflendere mai incearca cu niste date valide!!')
 };
 
 var drawStarsInTable = function (starsnumber) {
