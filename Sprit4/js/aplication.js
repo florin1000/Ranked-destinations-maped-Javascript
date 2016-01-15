@@ -38,6 +38,35 @@ var drawTable = function (store) {
     })
 };
 
+var removeRow = function () {
+    $(tableBody).on('click', 'a.remove-btn', function () {
+            var id = $(this).closest('tr').data('id');
+            if (confirm('Are you sure you want to delete this city?')) {
+                store.delete(id).then(function () {
+                    drawTable(store);
+                });
+            }
+        
+            return false;
+        }
+    );
+};
+
+var editRow = function () {
+    $(tableBody).on('click', 'a.edit-btn', function () {
+        theForm.addClass("to_edit");
+        var id = $(this).closest('tr').data('id');
+        store.get(id).then(function (data) {
+            editingItem = data;
+            $('input[name="name"]').val(data.name);
+            $('input[name="visited"]').prop("checked", data.visited);
+            $('input[name="stele"]').val(data.stars).change();
+        }, errorHandler);
+
+        return false;
+    });
+};
+
 var showLoadingGif = function () {
     loading.addClass('addgyf');
     container.addClass('blur');
@@ -139,36 +168,15 @@ var resetForm = function () {
 $(document).ready(function () {
     theForm.submit(onSubmit);
     $('[name="stele"]').stars();
-    $(tableBody).on('click', 'a.remove-btn', function () {
-            var id = $(this).closest('tr').data('id');
-            if (confirm('Are you sure you want to delete this city?')) {
-                store.delete(id).then(function () {
-                    drawTable(store);
-                });
-            }
-
-            return false;
-        }
-    );
-    $(tableBody).on('click', 'a.edit-btn', function () {
-        theForm.addClass("to_edit");
-        var id = $(this).closest('tr').data('id');
-        store.get(id).then(function (data) {
-            editingItem = data;
-            $('input[name="name"]').val(data.name);
-            $('input[name="visited"]').prop("checked", data.visited);
-            $('input[name="stele"]').val(data.stars).change();
-        }, errorHandler);
-
-        return false;
-    });
+    removeRow();
+    editRow();
     theForm.find('a.cancel').click(cancelClicked);
     accessGipfy();
     closeGyphi();
     pageIncrement();
     pageDecrement();
     drawTable(store);
-})
-;
+});
+
 
 

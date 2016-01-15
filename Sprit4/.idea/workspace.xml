@@ -41,20 +41,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="aplication.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="aplication.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/aplication.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-45.310345">
-              <caret line="143" column="67" selection-start-line="143" selection-start-column="67" selection-end-line="143" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.4567474">
+              <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="confirm.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="confirm.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/confirm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5288303">
+            <state vertical-scroll-proportion="0.0">
               <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
               <folding />
             </state>
@@ -90,8 +90,8 @@
         <option value="$PROJECT_DIR$/js/store.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/css/styles.css" />
-        <option value="$PROJECT_DIR$/js/aplication.js" />
         <option value="$PROJECT_DIR$/js/confirm.js" />
+        <option value="$PROJECT_DIR$/js/aplication.js" />
       </list>
     </option>
   </component>
@@ -381,18 +381,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/aplication.js">
+    <entry file="file://$PROJECT_DIR$/js/confirm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-45.310345">
-          <caret line="143" column="67" selection-start-line="143" selection-start-column="67" selection-end-line="143" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/confirm.js">
+    <entry file="file://$PROJECT_DIR$/js/aplication.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5288303">
-          <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.4567474">
+          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
           <folding />
         </state>
       </provider>
