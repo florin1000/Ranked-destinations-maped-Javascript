@@ -40,10 +40,12 @@ var drawTable = function (store) {
 
 var showLoadingGif = function () {
     loading.addClass('addgyf');
+    container.addClass('blur');
 };
 
 var closeLoadingGif = function () {
     loading.removeClass('addgyf');
+    container.removeClass('blur');
 };
 
 var getFormData = function () {
