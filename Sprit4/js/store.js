@@ -1,85 +1,62 @@
 var store = (function () {
     var theUrl = "http://server.godev.ro:8080/api/florin/entries";
+    var defaultSettings = {
+        type: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    var errorHandler = function (reject) {
+        return function (xhr) {
+
+            if (xhr.status == 409) {
+                reject(xhr.responseJSON.error);
+            } else {
+                alert('Bad boys have arrived');
+            }
+        };
+    };
 
     return {
         getAll: function (page) {
-            var getSettings = {
-                type: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            };
 
             return new Promise(function (resolve, reject) {
-                $.ajax(theUrl + '?page=' + page, getSettings).done(function (data) {
-                    resolve(data)
-                }).fail(function (xhr) {
-                    if (xhr.status == "409") {
-                        alert(responseJson.error);
-                    } else {
-                        alert("Something went wrong!!");
-                    }
-                    ;
-                });
+                $.ajax(theUrl + '?page=' + page,
+                    defaultSettings).done(resolve).fail(errorHandler(reject))
             });
         },
+
         add: function (item) {
-            console.log(item);
+
             return new Promise(function (resolve, reject) {
-                $.ajax(theUrl, {
-                    type: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    data: JSON.stringify(item)
-                }).done(function (data) {
-                    resolve(data);
-                });
+                $.ajax(theUrl, $.extend({}, defaultSettings, {type: 'POST', data: JSON.stringify(item)})
+                ).done(resolve).fail(errorHandler(reject));
             });
         },
+
         update: function (id, updateData) {
-            var theUrl2 = "http://server.godev.ro:8080/api/florin/entries/" + id;
+
             return new Promise(function (resolve, reject) {
-                $.ajax(theUrl2, {
+                $.ajax(theUrl + '/' + id, $.extend({}, defaultSettings, {
                     type: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
                     data: JSON.stringify(updateData)
-                }).done(function (data) {
-                    resolve(data);
-                });
+                })).done(resolve).fail(errorHandler(reject));
             });
         },
+
         get: function (id) {
 
             return new Promise(function (resolve, reject) {
-                var theUrl3 = theUrl + "/" + id;
-                $.ajax(theUrl3, {
-                    type: 'get',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }).done(function (data) {
-                    resolve(data);
-                });
-            })
+                $.ajax(theUrl + '/' + id, defaultSettings).done(resolve).fail(errorHandler(reject));
+            });
         },
+
         delete: function (id) {
 
             return new Promise(function (resolve, reject) {
-                var theUrl2 = "http://server.godev.ro:8080/api/florin/entries/" + id;
-                $.ajax(theUrl2, {
-                    type: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }).done(function (data) {
-                    resolve(data);
-                })
+                $.ajax(theUrl + '/' + id, $.extend({}, defaultSettings, {type: 'DELETE'})).done(resolve).fail(errorHandler(reject))
             });
         }
     };
 })();
-
 

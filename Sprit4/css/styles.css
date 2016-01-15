@@ -14,7 +14,6 @@ time, mark, audio, video {
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
     font: inherit;
     vertical-align: baseline;
 }
@@ -58,11 +57,10 @@ q:before, q:after {
 .nav p {
     font-family: sans-serif;
     color: #ffff00;
-    margin: 0 auto;
+    margin: 0 auto 100px;
     width: 310px;
     font-size: 20px;
     line-height: 28px;
-    margin-bottom: 100px;
 }
 
 .nav h1 {
@@ -70,10 +68,8 @@ q:before, q:after {
     color: #ffff00;
     font-size: 50px;
     font-weight: bold;
-    margin: 0 auto;
+    margin: 25px auto 45px;
     width: 700px;
-    margin-top: 25px;
-    margin-bottom: 45px
 }
 
 .header .logo img {
@@ -208,10 +204,6 @@ button:focus {
     outline: 0;
 }
 
-.adding {
-    display: none;
-}
-
 /*statistics*/
 .table-bordered thead tr th span:before {
     content: "\25be";
@@ -304,10 +296,6 @@ tbody tr td a:nth-child(2) {
     margin-top: 30px;
 }
 
-#table .tablefooter tr td {
-    border: 1px solid #696969;
-}
-
 .hover {
     color: gold;
 }
@@ -362,26 +350,45 @@ tbody tr td:nth-child(2) {
 .gyfdisplay {
     display: block;
     position: absolute;
-    background:magenta;
-    /*height:200px;*/
-    /*width:250px;*/
-    margin-left:300px;
-    margin-top:300px;
-    z-index:10;
+    background: magenta;
+    z-index: 10;
+}
+
+#gify {
+    height: 150%;
+    width: 1349px;
+    background: transparent;
+    text-align: center;
+}
+
+#gify span {
+    background-color: transparent;
+    text-align: center;
+    font-weight: 900;
+    cursor: pointer;
+    color: red;
+}
+
+.blur {
+    opacity: 0.6;
+}
+
+#gifyimg {
+    padding-top: 350px;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .gyfremove {
     display: none;
 }
 
-.opacity{
-    opacity:0.8;
+.addgyf {
+    display: block;
 }
 
-#id{
-    z-index:11;
-}
-
-.addgyf{
-    display:block;
-}
+/*. {*/
+    /*!*display: block;*!*/
+    /*!*heigth: 100px;*!*/
+    /*!*width: 100px;*!*/
+/*}*/

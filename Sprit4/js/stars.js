@@ -1,7 +1,8 @@
-$.fn.stars = function(options) {
+$.fn.stars = function (options) {
     var defaults = {
         stars: 5,
-        onChange: function () {}
+        onChange: function () {
+        }
     };
 
     var methods = {
@@ -55,7 +56,7 @@ $.fn.stars = function(options) {
                 options.onChange(value);
             };
 
-            for (i = 0; i < options.stars; i++) {
+            for (var i = 0; i < options.stars; i++) {
                 var $star = $('<span class="star">★</span>');
 
                 $star.hover(

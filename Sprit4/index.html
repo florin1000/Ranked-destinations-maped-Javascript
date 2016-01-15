@@ -11,8 +11,8 @@
 
 <body>
 <div id="gify" class="gyfremove">
-    <img id="gifyimg" alt="naspa nu merge" />
-    <span id="closegyf" class="gyfremove">&#x2717</span>
+    <img id="gifyimg" src="img/noon.gif" alt="naspa nu merge"/>
+    <span id="closegyf" class="gyfremove">&#x2327</span>
 </div>
 
 <div class="containerinitial">
@@ -33,13 +33,8 @@
                                                                class="invalidname2">Name should be at least 2 characters long</span></label>
                     <input type="text" class="form-control modifiedcss" id="name" name="name"
                            aria-describedby="inputSuccess2Status">
-                    <span class="glyphicon glyphicon-ok form-control-feedback " id="spanmodified"
-                          aria-hidden="true"></span>
-                    <span id="inputSuccess2Status " class="sr-only">(success)</span>
                 </div>
-
                 <input id="starsuri" type="text" class="stars" name="stele" value="0">
-
                 <div id="checkbox">
                     <label>
                         <input type="checkbox" checked="checked" id="button" name="visited"> Visited
@@ -54,9 +49,12 @@
                     <a href="#" class="cancel" id="cancel">Cancel</a>
                 </div>
             </form>
+            <div id="loading" class="gyfremove">
+                <img src="img/5.gif"/>
+            </div>
         </div>
-
         <div class="statistics">
+
             <table class="table table-bordered" id="table">
                 <thead>
                 <tr>
@@ -74,6 +72,7 @@
                 <span id="currentpage">1</span> of <span id="totalpage"></span>
                 <button id="increment"> >></button>
             </div>
+
         </div>
         <div class="clearfix">
         </div>
@@ -92,7 +91,7 @@
 <script type="text/html" id="tpl">
     <tr data-id="<%=id%>">
         <td><%=name%></td>
-        <td><%=stars%></td>
+        <td data="stele"><%=stars%></td>
         <td><%=visited%></td>
         <td><a href="#" class="remove-btn" name="remove">Remove</a>
             <a href="#" class="edit-btn">Edit</a>
@@ -101,9 +100,9 @@
 </script>
 <script type="text/javascript" src="js/template-engine.js"></script>
 <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-<script type="text/javascript" src="js/aplication.js"></script>
 <script type="text/javascript" src="js/store.js"></script>
 <script type="text/javascript" src="js/stars.js"></script>
 <script type="text/javascript" src="js/confirm.js"></script>
+<script type="text/javascript" src="js/aplication.js"></script>
 </body>
 </html>
