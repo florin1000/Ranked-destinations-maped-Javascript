@@ -1,14 +1,11 @@
 var genereaza = function(){
 	return Math.floor(Math.random()*100);
-}
-
+};
 var buton=document.getElementById("generate");
 buton.addEventListener("click", 
 	function () {
 		 var rezultat1=genereaza();
-		 console.log(rezultat1);		 
 		 var rezultat2=genereaza();
-		 console.log(rezultat2);
 		 var area=(rezultat1*rezultat2)/100;
 		 console.log(area);
 		 document.getElementById("progress").style.width=rezultat1+"%";
